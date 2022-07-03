@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext, useRef } from "react";
+import codeContext from ".";
+import "./App.css";
 
 function App() {
+  const ref = useRef();
+  const codeInfo = useContext(codeContext);
+  const handleRef = () => {
+    console.log(ref.current.value);
+    console.log(ref.current.offsetHeight);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>useContext</h1>
+      <hr></hr>
+      <p>{codeInfo.name}</p>
+      <p>{codeInfo.age}</p>
+      <h1>useRef</h1>
+      <hr></hr>
+      <input type="text" ref={ref} />
+      <button onClick={handleRef}>useRef</button>
     </div>
   );
 }
